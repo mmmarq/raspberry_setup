@@ -92,6 +92,23 @@ fi
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
+alias g='git'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbag='git branch -a | grep'
+alias gc='git commit'
+alias gcl='git clean -dfx'
+alias gcp='git cherry-pick'
+alias gd='git diff'
+alias gf='git fetch'
+alias gl='git log --decorate --graph'
+alias gm='git merge'
+alias gp='git push'
+alias gr='git remote -v'
+alias gra='git remote add'
+alias grh='git reset --hard'
+alias grr='git remote rm'
+alias gst='git status'
     . ~/.bash_aliases
 fi
 
@@ -104,5 +121,23 @@ fi
 
 alias ll="ls -la"
 alias h="history"
+alias g='git'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gbag='git branch -a | grep'
+alias gc='git commit'
+alias gcl='git clean -dfx'
+alias gcp='git cherry-pick'
+alias gd='git diff'
+alias gf='git fetch'
+alias gl='git log --decorate --graph'
+alias gm='git merge'
+alias gp='git push'
+alias gr='git remote -v'
+alias gra='git remote add'
+alias grh='git reset --hard'
+alias grr='git remote rm'
+alias gst='git status'
+
 export EDITOR=nano
 
