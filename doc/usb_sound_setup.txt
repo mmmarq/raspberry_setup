@@ -1,0 +1,100 @@
+# How to Setup USB sound dongle SJ-588
+
+https://learn.adafruit.com/usb-audio-cards-with-a-raspberry-pi/updating-alsa-config
+
+sudo nano /etc/modprobe.d/alsa-base.conf
+
+#change the index from -2 to 0: 
+
+options snd-usb-audio index=0
+
+
+#remove noise and fix sound "speed"
+
+http://www.raspberrypi.org/forums/viewtopic.php?t=20866
+
+# Install needed lib:
+
+sudo apt-get install libasound2-plugins
+
+# add the following to the /boot/cmdline.txt
+
+dwc_otg.speed=1
+
+# Created ~/.libao file in my home directory and entered the following:
+
+driver=alsa
+dev=default
+
+# Lastly created a ~/.asoundrc in my home directory and entered the following:
+
+pcm.!default {
+              type asym
+              playback.pcm "defaultplayback"
+              capture.pcm "defaultrec"
+                hint{   show on
+                   description "default play and rec koko"
+                }
+      }
+
+      pcm.defaultrec {
+              type plug
+              slave {
+                  pcm "hw:0,0"
+                  rate 48000 
+                  channels 2
+                  format S16_LE
+              }
+                hint{   show on
+                   description "default rec koko"
+                }
+
+      }
+
+  pcm.defaultplayback{
+          type rate
+          slave.pcm mix1
+          slave.rate 48000 
+
+          #Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz:
+
+            #converter "samplerate_best"     # perfect: 16%cpu, maybe overkill
+            #converter "samplerate_medium"   # almost perfect: 6%cpu
+            #converter "samplerate"          # good: 4%cpu, definitely usable
+            #converter "samplerate_linear"   # bad: 2%cpu, way better than default wine resampler
+            #converter "samplerate_order"    # very bad: 2%cpu, like the default wine resampler
+
+          converter "samplerate"
+
+            hint{   show on
+                   description "default play koko"
+            }
+  }
+
+    pcm.mix1 {
+            type dmix
+            ipc_key 1024
+            slave {
+                pcm "hw:0,0"
+                rate 48000
+                periods 128
+                period_time 0
+                period_size 1024 # must be power of 2
+                buffer_size 65536
+
+            }
+    }
+
+
+
+
+
+
+
+
+
+
+
+#If you want to aplay through that jack again, specify card 1 with -D hw:1,0 instead of -D hw:0,0
+
+speaker-test -c2 -D hw:1,0
