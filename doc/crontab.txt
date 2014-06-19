@@ -22,5 +22,6 @@
 # m h  dom mon dow   command
 * * * * * /home/pi/bin/resize_image.sh
 0 * * * * /media/2/code/raspberry_lcd/data_log.py
-30 0 * * * /media/2/Dropbox-Uploader/dropbox_uploader.sh upload /media/2/log log
+59 23 * * * cat `date +"%Y"`*.log | sed 's/\([0-9]*\)-\([0-9]*\)-\([0-9]*\) /\3,\2,\1,/g' | sed 's/:00 /:00,/g' | sed 's/ \([0-9]*$\)/,\1/g' > `date +"%Y"`_local_data.csv
+30 0 * * * /media/2/Dropbox-Uploader/dropbox_uploader.sh upload /media/2/log local_data
 
