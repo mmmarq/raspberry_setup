@@ -22,6 +22,6 @@
 # m h  dom mon dow   command
 * * * * * /home/pi/bin/resize_image.sh
 0 * * * * /media/2/code/raspberry_lcd/data_log.py
-30 23 * * * /home/pi/bin/plot_local_data.sh
+#30 23 * * * /home/pi/bin/plot_local_data.sh
 30 0 * * * /media/2/Dropbox-Uploader/dropbox_uploader.sh upload /media/2/log local_data
-
+10 * * * * /media/2/code/raspberry_gdoc/update_spreadsheet.py --cf /home/pi/.gdoc_config
