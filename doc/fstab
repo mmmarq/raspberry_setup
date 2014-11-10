@@ -1,0 +1,8 @@
+proc            /proc           proc    defaults          0       0
+/dev/mmcblk0p5  /boot           vfat    defaults          0       2
+/dev/mmcblk0p6  /               ext4    defaults,noatime  0       1
+#/dev/sdb1	/media/1	ext4	defaults,noatime  0	  0
+/dev/sda1       /media/2        ext4    defaults,noatime  0       0
+#Router Disk
+//192.168.0.1/volume1 /media/1 cifs username=samba,password=Lion3hrt 0 0
+# a swapfile is not a swap partition, so no using swapon|off from here on, use  dphys-swapfile swap[on|off]  for that
