@@ -1,0 +1,9 @@
+====== Python GPIO interface ======
+
+http://openmicros.org/index.php/articles/94-ciseco-product-documentation/raspberry-pi/217-getting-started-with-raspberry-pi-gpio-and-python
+
+$ wget https://pypi.python.org/packages/source/R/RPi.GPIO/RPi.GPIO-0.5.8.tar.gz
+$ tar zxf RPi.GPIO-0.1.0.tar.gz
+$ cd RPi.GPIO-0.1.0
+$ sudo python setup.py install
+
