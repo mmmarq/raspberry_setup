@@ -20,11 +20,10 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-* * * * * /home/pi/bin/resize_image.sh
+#* * * * * /home/pi/bin/resize_image.sh
+#* * * * * /media/2/code/raspberry_adc/tunnel_starter
 0 * * * * /media/2/code/raspberry_lcd/data_log.py
-#30 23 * * * /home/pi/bin/plot_local_data.sh
+0 * * * * /media/2/Dropbox-Uploader/dropbox_uploader.sh -sq upload /media/1/share/raspbox share
 30 0 * * * /media/2/Dropbox-Uploader/dropbox_uploader.sh upload /media/2/log local_data
 10 * * * * /media/2/code/raspberry_gdoc/update_spreadsheet.py --cf /home/pi/.gdoc_config
-0 * * * * /media/2/Dropbox-Uploader/dropbox_uploader.sh -sq upload /media/1/share/raspbox share
-* * * * * /media/2/code/raspberry_adc/tunnel_starter
-
+0,10,20,30,40,50 * * * * sudo /home/pi/bin/disk_check.sh
