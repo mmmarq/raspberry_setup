@@ -7,3 +7,5 @@ $ tar zxf RPi.GPIO-0.1.0.tar.gz
 $ cd RPi.GPIO-0.1.0
 $ sudo python setup.py install
 
+python setup.py build
+sudo python setup.py install
