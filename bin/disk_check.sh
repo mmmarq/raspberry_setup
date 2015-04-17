@@ -8,7 +8,7 @@ then
   mount /media/1
   echo "Restarting services"
   /etc/init.d/transmission-daemon restart
-  /etc/init.d/btsync restart
+  #/etc/init.d/btsync restart
   echo "Done"
 fi
 
