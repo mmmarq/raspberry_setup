@@ -1,0 +1,11 @@
+# Mount disk over ssh:
+
+apt-get install sshfs
+sshfs <USER>@<HOSTNAME>:<PATH> <MOUNTPOINT>
+
+# Mount disk image created by dd command
+
+apt-get install kpartx
+ls -la /dev/mapper/
+mount /dev/mapper/loop0p6 <MOUNTPOINT>
+
