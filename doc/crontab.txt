@@ -20,11 +20,10 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-0 * * * * /media/2/code/raspberry_lcd/data_log.py
-#10 * * * * /media/2/code/raspberry_setup/bin/data_log.py
+0 * * * * /media/2/code/raspberry_setup/bin/data_log.py
 0 * * * * /media/2/Dropbox-Uploader/dropbox_uploader.sh -sq upload /media/1/share/raspbox share
-#15 * * * * /media/2/Dropbox-Uploader/dropbox_uploader.sh -sq upload /media/2/cameras/camera1/upload camera1
 30 0 * * * /media/2/Dropbox-Uploader/dropbox_uploader.sh upload /media/2/log local_data
 10 * * * * /media/2/code/raspberry_gdoc/update_spreadsheet.py --cf /home/pi/.gdoc_config
 0,10,20,30,40,50 * * * * sudo /home/pi/bin/disk_check.sh
 5,15,25,35,45,55 * * * * sudo /home/pi/bin/move_media.sh
+0 2 * * * find /media/1/cameras/camera1 -mtime 30 -exec rm -f {} \;
