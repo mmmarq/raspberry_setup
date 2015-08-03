@@ -12,3 +12,9 @@ then
   echo "Done"
 fi
 
+if [ "$1" = "-r" ]
+then
+  echo "Service restart requested"
+  /etc/init.d/transmission-daemon restart
+fi
+
