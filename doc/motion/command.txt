@@ -1,1 +1,1 @@
-sudo motion -n -s -c /media/2/code/raspberry_setup/doc/motion/motion.conf
+sudo motion -n -s -c /etc/motion/motion.conf
