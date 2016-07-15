@@ -18,7 +18,7 @@ def main():
     # Read data from sensor
     response = urllib2.urlopen(IP)
     html = response.read()
-    temp,humid,alarm,light,rasp = html.split()
+    temp,humid,light,alarm,rasp = html.split()
 
     if humid is not None and temp is not None:
       lTemp = "{0:0.1f}".format(float(temp))
@@ -28,7 +28,7 @@ def main():
       #Open log file to write
       f = open(LOG,'a')
       #Save data into log file
-      f.write(date + ',' + lTemp + ',' + lHumid + '\n')
+      f.write(date + ',' + lTemp + ',' + lHumid + ',' + light  + '\n')
       #Close log file
       f.close()
       #Open database connection
