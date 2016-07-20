@@ -138,6 +138,7 @@ alias gra='git remote add'
 alias grh='git reset --hard'
 alias grr='git remote rm'
 alias gst='git status'
+alias llog='tail -1000 /mnt/code/log/light_control.log'
 
 export EDITOR=nano
 
