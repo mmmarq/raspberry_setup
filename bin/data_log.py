@@ -16,7 +16,7 @@ def main():
 
   try:
     # Read data from sensor
-    response = urllib2.urlopen(IP)
+    response = urllib2.urlopen(IP, timeout=2)
     html = response.read()
     temp,humid,light,alarm,rasp = html.split()
 
