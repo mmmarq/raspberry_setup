@@ -20,25 +20,24 @@ def main():
     html = response.read()
     temp,humid,light,alarm,rasp = html.split()
 
-    if humid is not None and temp is not None:
-      lTemp = "{0:0.1f}".format(float(temp))
-      lHumid =  "{0:0.1f}".format(float(humid))
-      #Get date
-      date = strftime("%Y,%m,%d,%H:%M", localtime())
-      #Open log file to write
-      f = open(LOG,'a')
-      #Save data into log file
-      f.write(date + ',' + lTemp + ',' + lHumid + ',' + light  + '\n')
-      #Close log file
-      f.close()
-      #Open database connection
-      con = sqlite3.connect(DB)
-      #Log data on database
-      mySql = 'INSERT INTO weather_data VALUES(' + str(int(time())) + ',' + lTemp + ',' + lHumid + ')'
-      with con:
-        cur = con.cursor()
-        cur.execute(mySql)
-        con.commit()
+    lTemp = "{0:0.1f}".format(float(temp))
+    lHumid =  "{0:0.1f}".format(float(humid))
+    #Get date
+    date = strftime("%Y,%m,%d,%H:%M", localtime())
+    #Open log file to write
+    f = open(LOG,'a')
+    #Save data into log file
+    f.write(date + ',' + lTemp + ',' + lHumid + ',' + light  + '\n')
+    #Close log file
+    f.close()
+    #Open database connection
+    con = sqlite3.connect(DB)
+    #Log data on database
+    mySql = 'INSERT INTO weather_data VALUES(' + str(int(time())) + ',' + lTemp + ',' + lHumid + ')'
+    with con:
+      cur = con.cursor()
+      cur.execute(mySql)
+      con.commit()
   except:
     print "Error reading data"
 
