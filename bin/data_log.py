@@ -28,7 +28,7 @@ def main():
     #Open log file to write
     f = open(LOG,'a')
     #Save data into log file
-    f.write(date + ',' + lTemp + ',' + lPres + ',' + lHumid + ',' + light  + '\n')
+    f.write(date + ',' + lTemp + ',' + lHumid + ',' + lPres + ',' + light  + '\n')
     #Close log file
     f.close()
     #Open database connection
