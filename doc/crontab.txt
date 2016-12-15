@@ -22,6 +22,6 @@
 # m h  dom mon dow   command
 0 * * * * sudo /mnt/code/raspberry_setup/bin/data_log.py
 1,11,21,31,41,51 * * * * sudo /mnt/code/raspberry_setup/bin/atmpres_log.py
-0,10,20,30,40,50 * * * * sudo /mnt/code/raspberry_setup/bin/motion_uploader.sh
+0,10,20,30,40,50 * * * * /mnt/code/raspberry_setup/bin/motion_uploader.sh
 0 5 * * * sudo /etc/init.d/transmission-daemon restart
 30 0 * * * /mnt/code/Dropbox-Uploader/dropbox_uploader.sh upload /mnt/code/log local_data
