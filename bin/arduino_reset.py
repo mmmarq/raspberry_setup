@@ -15,7 +15,7 @@ def main():
 
    #Set GPIO pin HIGH for 2 seconds
    GPIO.output(ARDUINO_PIN, True)
-   time.sleep(2)
+   time.sleep(5)
    #Set GPIO pin LOW
    GPIO.output(ARDUINO_PIN, False)
 

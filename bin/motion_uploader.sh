@@ -35,7 +35,7 @@ else
 fi
 
 # REFRESH CACHE
-#$UPLOADER sync
+$UPLOADER sync
 
 # CREATE CURRENT DATA FOLDER
 CURR_DATE=`date +%Y-%m-%d`
