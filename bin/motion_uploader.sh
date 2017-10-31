@@ -4,7 +4,6 @@
 # http://acd-cli.readthedocs.io/en/latest/usage.html
 # http://xmodulo.com/access-amazon-cloud-drive-command-line-linux.html
 
-UPLOADER="/usr/local/bin/acd_cli -nl"
 TEMP_FILE="/tmp/motion_uploader.tmp"
 
 trap cleanup 1 2 3 6 9 15
@@ -34,18 +33,16 @@ else
   echo $$ > $TEMP_FILE
 fi
 
-# REFRESH CACHE
-$UPLOADER sync
-
 # CREATE CURRENT DATA FOLDER
 CURR_DATE=`date +%Y-%m-%d`
-$UPLOADER mkdir --parents /Videos/Motion/$CURR_DATE
+sudo mkdir -p /mnt/server/share/motion/camera1/$CURR_DATE
 
-FILES=`find /mnt/media/cameras/camera1 -mmin +10`
+FILES=`find /mnt/cameras/camera1 -type f -mmin +10`
 
 for file in $FILES; do
   FILE_DATE=`echo $file | sed 's/-[0-9]*_.*$//g' | sed 's/^.*\///g'`
-  $UPLOADER ul --force --remove-source-files --quiet $file /Videos/Motion/$FILE_DATE
+  sudo mv $file /mnt/server/share/motion/camera1/$FILE_DATE
+  sudo rm -f $file
 done
 
 rm -f $TEMP_FILE
