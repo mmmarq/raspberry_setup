@@ -20,10 +20,10 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 # 
 # m h  dom mon dow   command
-0 * * * * sudo /mnt/code/raspberry_setup/bin/data_log.py
-1,11,21,31,41,51 * * * * sudo /mnt/code/raspberry_setup/bin/atmpres_log.py
-0,10,20,30,40,50 * * * * /mnt/code/raspberry_setup/bin/motion_uploader.sh
-0 5 * * * sudo /etc/init.d/transmission-daemon restart
-30 0 * * * /mnt/code/Dropbox-Uploader/dropbox_uploader.sh upload /mnt/code/log local_data
-5,15,25,35,45,55 * * * * /mnt/code/raspberry_setup/bin/cpu_temp_log.sh >> /mnt/code/log/cpu_temp.log
-
+*/30 * * * * sudo /mnt/code/raspberry_setup/bin/data_log.py
+#*/10 * * * * sudo /mnt/code/raspberry_setup/bin/atmpres_log.py
+#*/10 * * * * /mnt/code/raspberry_setup/bin/cpu_temp_log.sh >> /mnt/code/log/cpu_temp.log
+#*/10 * * * * /mnt/code/raspberry_setup/bin/motion_uploader.sh
+@hourly sudo find /mnt/cameras -name "*.avi" -type f -mmin +60 -delete
+@daily  sudo /etc/init.d/transmission-daemon restart
+@daily  /mnt/code/Dropbox-Uploader/dropbox_uploader.sh upload /mnt/code/log local_data
