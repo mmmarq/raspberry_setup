@@ -3,4 +3,5 @@ proc            /proc           proc    defaults          0       0
 /dev/mmcblk0p6  /               ext4    defaults,noatime  0       1
 tmpfs		/mnt/cameras	tmpfs	defaults,size=256m 0	  0
 UUID=88fb91df-278d-4026-98d5-9dc456b78dfa /mnt/code  ext4 defaults,noatime 0 0
+UUID=9170b422-6323-40a9-8dca-128961b051f8 /mnt/media ext4 defaults,noatime 0 0
 //192.168.0.1/volume1 /mnt/server cifs username=samba,password=<password>,sec=ntlm 0 0
